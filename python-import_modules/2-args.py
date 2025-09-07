@@ -1,8 +1,9 @@
-
 #!/usr/bin/python3
 import sys
+
 if __name__ == "__main__":
-    argc = len(sys.argv) - 1
+    argc = len(sys.argv) - 1  # количество аргументов без имени скрипта
+
     if argc == 0:
         print("0 arguments.")
     elif argc == 1:
