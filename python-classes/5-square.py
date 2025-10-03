@@ -1,38 +1,22 @@
 #!/usr/bin/python3
-"""Defines a Square with size validation, area computation, and printing."""
+"""Module defining a Square class with size and printing functionality."""
 
 
 class Square:
-    """Represents a square with private size attribute."""
+    """Represents a square."""
 
     def __init__(self, size=0):
-        """Initialize the square with optional size.
-
-        Args:
-            size (int): The size of the square (default 0).
-
-        Raises:
-            TypeError: If size is not an integer.
-            ValueError: If size is less than 0.
-        """
-        self.size = size  # Используем сеттер для валидации
+        """Initialize the square with optional size."""
+        self.size = size
 
     @property
     def size(self):
-        """Get the current size of the square."""
+        """Retrieve the size of the square."""
         return self.__size
 
     @size.setter
     def size(self, value):
-        """Set the size of the square with validation.
-
-        Args:
-            value (int): The new size of the square.
-
-        Raises:
-            TypeError: If value is not an integer.
-            ValueError: If value is less than 0.
-        """
+        """Set the size of the square with validation."""
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
         if value < 0:
@@ -44,7 +28,9 @@ class Square:
         return self.__size ** 2
 
     def my_print(self):
-        """Print the square using '#' characters."""
+        """Print the square with the character # to stdout."""
         if self.__size == 0:
             print()
             return
+        for _ in range(self.__size):
+            print("#" * self.__size)
