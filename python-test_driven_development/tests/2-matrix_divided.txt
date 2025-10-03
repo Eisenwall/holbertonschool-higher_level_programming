@@ -5,52 +5,44 @@ Example usage:
 
 >>> matrix_divided = __import__('2-matrix_divided').matrix_divided
 
-# Простейшее деление матрицы
 >>> matrix = [[1, 2, 3], [4, 5, 6]]
 >>> matrix_divided(matrix, 3)
 [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
 >>> matrix
-[[1, 2, 3], [4, 5, 6]]  # исходная матрица не изменилась
+[[1, 2, 3], [4, 5, 6]]
 
-# Деление с float
 >>> matrix = [[2.5, 5.0], [7.5, 10.0]]
 >>> matrix_divided(matrix, 2)
 [[1.25, 2.5], [3.75, 5.0]]
 
-# Деление на отрицательное число
 >>> matrix = [[1, -2], [3, -4]]
 >>> matrix_divided(matrix, -2)
 [[-0.5, 1.0], [-1.5, 2.0]]
 
-# Проверка TypeError для div не числа
 >>> try:
 ...     matrix_divided([[1, 2], [3, 4]], "a")
 ... except Exception as e:
 ...     print(e)
 div must be a number
 
-# Проверка ZeroDivisionError
 >>> try:
 ...     matrix_divided([[1, 2], [3, 4]], 0)
 ... except Exception as e:
 ...     print(e)
 division by zero
 
-# Проверка TypeError для неправильной структуры матрицы
 >>> try:
 ...     matrix_divided([1, 2, 3], 2)
 ... except Exception as e:
 ...     print(e)
 matrix must be a matrix (list of lists) of integers/floats
 
-# Проверка TypeError для строки разной длины
 >>> try:
 ...     matrix_divided([[1, 2], [3, 4, 5]], 2)
 ... except Exception as e:
 ...     print(e)
 Each row of the matrix must have the same size
 
-# Проверка TypeError для элементов не чисел
 >>> try:
 ...     matrix_divided([[1, 2], [3, "4"]], 2)
 ... except Exception as e:
