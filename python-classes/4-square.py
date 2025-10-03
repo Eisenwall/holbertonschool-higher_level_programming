@@ -1,6 +1,4 @@
 #!/usr/bin/python3
-"""Defines a Square with size validation, getter/setter, and area computation."""
-
 
 class Square:
     """Represents a square with a private size attribute."""
