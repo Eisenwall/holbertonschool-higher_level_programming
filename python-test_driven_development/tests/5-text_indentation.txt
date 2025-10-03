@@ -19,14 +19,3 @@ No separators here
 text must be a string
 
 >>> text_indentation(".?::..")
-.
- 
-?
- 
-:
- 
-:
- 
-.
- 
-.
