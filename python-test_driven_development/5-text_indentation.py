@@ -1,27 +1,32 @@
 #!/usr/bin/python3
-"""Module that prints a text with 2 new lines after each '.', '?', and ':'"""
+"""Module that defines text_indentation function"""
 
 
 def text_indentation(text):
     """Prints a text with 2 new lines after each '.', '?', and ':'.
 
     Args:
-        text (str): The text to print.
+        text (str): The text to print
 
     Raises:
-        TypeError: if text is not a string.
+        TypeError: If text is not a string
     """
-    if type(text) is not str:
+    if not isinstance(text, str):
         raise TypeError("text must be a string")
 
+    # Символы, после которых нужно ставить два переноса строки
     separators = ".?:"
     start = 0
 
     for i, char in enumerate(text):
         if char in separators:
-            print(text[start:i + 1].strip())
+            # Берём часть текста от start до текущего символа и убираем лишние пробелы
+            line = text[start:i+1].strip()
+            print(line)
             print()
             start = i + 1
 
-    if start < len(text):
-        print(text[start:].strip())
+    # Печатаем остаток текста, если есть
+    remainder = text[start:].strip()
+    if remainder:
+        print(remainder)
