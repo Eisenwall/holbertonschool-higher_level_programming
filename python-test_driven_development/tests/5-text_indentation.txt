@@ -1,0 +1,32 @@
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+>>> text_indentation("Hello. How are you? I am fine: Thanks.")
+Hello.
+ 
+How are you?
+ 
+I am fine:
+ 
+Thanks.
+
+>>> text_indentation("No separators here")
+No separators here
+
+>>> try:
+...     text_indentation(123)
+... except Exception as e:
+...     print(e)
+text must be a string
+
+>>> text_indentation(".?::..")
+.
+ 
+?
+ 
+:
+ 
+:
+ 
+.
+ 
+.
