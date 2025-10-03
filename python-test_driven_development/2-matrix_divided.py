@@ -31,7 +31,9 @@ def matrix_divided(matrix, div):
                     "matrix must be a matrix (list of lists) of integers/floats"
                 )
 
-    return [
-        [round(elem / div, 2) for elem in row]
-        for row in matrix
-    ]
+    new_matrix = []
+    for row in matrix:
+        new_row = [round(elem / div, 2) for elem in row]
+        new_matrix.append(new_row)
+
+    return new_matrix
