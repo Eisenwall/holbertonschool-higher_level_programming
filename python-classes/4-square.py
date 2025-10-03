@@ -1,19 +1,24 @@
 #!/usr/bin/python3
-"""Defines a Square with size validation, getter/setter, and area computation."""
+"""This module defines a class Square with a private size attribute
+and getter/setter for size, plus an area method.
+"""
 
 
 class Square:
-    """Represents a square with a private size attribute."""
-    
+    """Represents a square."""
+
     def __init__(self, size=0):
+        """Initialize the square with optional size."""
         self.size = size
 
     @property
     def size(self):
+        """Retrieve the size of the square."""
         return self.__size
 
     @size.setter
     def size(self, value):
+        """Set the size of the square with validation."""
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
         if value < 0:
@@ -21,4 +26,5 @@ class Square:
         self.__size = value
 
     def area(self):
-        return self.__size * self.__size
+        """Return the current square area."""
+        return self.__size ** 2
