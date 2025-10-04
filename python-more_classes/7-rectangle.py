@@ -12,8 +12,8 @@ class Rectangle:
     def __init__(self, width=0, height=0):
         """Initialize a new Rectangle.
         Args:
-            width (int): The width of the rectangle.
-            height (int): The height of the rectangle.
+            width (int): width of the rectangle
+            height (int): height of the rectangle
         """
         self.width = width
         self.height = height
@@ -62,7 +62,10 @@ class Rectangle:
         if self.__width == 0 or self.__height == 0:
             return ""
         symbol = str(self.print_symbol)
-        lines = [symbol * self.__width for _ in range(self.__height)]
+        lines = [
+            symbol * self.__width
+            for _ in range(self.__height)
+        ]
         return "\n".join(lines)
 
     def __repr__(self):
@@ -70,6 +73,6 @@ class Rectangle:
         return "Rectangle({}, {})".format(self.__width, self.__height)
 
     def __del__(self):
-        """Print a message when an instance is deleted and decrement the instance counter."""
+        """Print a message when an instance is deleted and decrement the counter."""
         print("Bye rectangle...")
         Rectangle.number_of_instances -= 1
