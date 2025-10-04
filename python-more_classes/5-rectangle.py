@@ -56,7 +56,7 @@ class Rectangle:
         return "\n".join(lines)
 
     def __repr__(self):
-        """Return a string representation to recreate a new instance using eval()."""
+
         return "Rectangle({}, {})".format(self.__width, self.__height)
 
     def __del__(self):
