@@ -1,7 +1,7 @@
-class MyClass:
-    attr = 5
-    def method(self):
-        pass
+#!/usr/bin/python3
+"""Module that returns a list of available attributes and methods of an object"""
 
-print(lookup(MyClass))
-# ['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', ..., 'attr', 'method']
+
+def lookup(obj):
+    """Return the list of available attributes and methods of obj"""
+    return dir(obj)
