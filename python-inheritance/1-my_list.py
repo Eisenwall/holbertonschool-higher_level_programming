@@ -1,13 +1,11 @@
 #!/usr/bin/python3
-"""Module defining MyList class"""
+"""Module containing print_sorted func"""
+
 
 class MyList(list):
-    """Custom list class that inherits from list"""
+    """Class inherited from list class"""
 
     def print_sorted(self):
-        """Prints the list in ascending order without modifying it"""
-        try:
-            print(sorted(self))
-        except TypeError:
-            
-            print(sorted(self, key=lambda x: str(x)))
+        """Method to print sorted list"""
+        new_list = sorted(self)
+        print(new_list)
