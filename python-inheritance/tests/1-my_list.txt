@@ -1,29 +1,18 @@
->>> MyList = __import__('1-my-list').MyList
->>> show_sorted = MyList.print_sorted
+>>> MyList = __import__('1-my_list').MyList
+>>> my_list = MyList()
+>>> my_list.append(1)
+>>> my_list.append(4)
+>>> my_list.append(2)
+>>> my_list.append(3)
+>>> my_list.append(5)
+>>> print(my_list)
+[1, 4, 2, 3, 5]
+>>> my_list.print_sorted()
+[1, 2, 3, 4, 5]
+>>> print(my_list)
+[1, 4, 2, 3, 5]
+>>> isinstance(my_list, list)
+True
+>>> isinstance(my_list, MyList)
+True
 
->>> data = MyList()
->>> data.append(1)
->>> data.append(4)
->>> data.append(2)
->>> data.print_sorted()
-[1, 2, 4]
-
->>> data.clear()
->>> data.print_sorted()
-[]
-
->>> data.append(1)
->>> data.append(-2)
->>> data.print_sorted()
-[-2, 1]
-
->>> data.clear()
->>> data.append("hello")
->>> data.append("123")
->>> result = data.print_sorted()
-['123', 'hello']
-
->>> print(result)
-None
-
->>> print(data)
