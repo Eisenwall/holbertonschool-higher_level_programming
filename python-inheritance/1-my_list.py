@@ -1,11 +1,20 @@
 #!/usr/bin/python3
-"""Module containing print_sorted func"""
+"""
+A module to prints a list in ascending order
+"""
 
 
 class MyList(list):
-    """Class inherited from list class"""
+    """
+    A class to customize the list class
+    """
 
     def print_sorted(self):
-        """Method to print sorted list"""
+        """
+        Prints a list in ascending order
+
+        Sort a list and then prints on the output
+        """
+
         if issubclass(MyList, list):
-        print(sorted(self))
+            print(sorted(self))
