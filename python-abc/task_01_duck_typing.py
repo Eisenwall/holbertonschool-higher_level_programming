@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-Module demonstrating abstract shapes and duck typing
+Module demonstrating abstract shapes, duck typing,
+and validation of input values.
 """
 
 from abc import ABC, abstractmethod
@@ -25,6 +26,8 @@ class Circle(Shape):
     """Circle shape"""
 
     def __init__(self, radius):
+        if radius <= 0:
+            raise ValueError("radius must be greater than 0")
         self.radius = radius
 
     def area(self):
@@ -38,6 +41,10 @@ class Rectangle(Shape):
     """Rectangle shape"""
 
     def __init__(self, width, height):
+        if width <= 0:
+            raise ValueError("width must be greater than 0")
+        if height <= 0:
+            raise ValueError("height must be greater than 0")
         self.width = width
         self.height = height
 
