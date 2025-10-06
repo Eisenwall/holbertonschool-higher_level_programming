@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Module demonstrating abstract shapes, duck typing,
-and validation of input values.
+and input validation.
 """
 
 from abc import ABC, abstractmethod
@@ -56,8 +56,6 @@ class Rectangle(Shape):
 
 
 def shape_info(shape):
-    """
-    Prints the area and perimeter of a shape using duck typing
-    """
+    """Prints the area and perimeter of a shape using duck typing"""
     print("Area:", shape.area())
     print("Perimeter:", shape.perimeter())
