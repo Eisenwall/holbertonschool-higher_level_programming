@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Module that defines a Student class"""
+"""Module that defines a Student class with a to_json method"""
 
 
 class Student:
@@ -10,3 +10,7 @@ class Student:
         self.first_name = first_name
         self.last_name = last_name
         self.age = age
+
+    def to_json(self):
+        """Return a dictionary representation of the Student instance"""
+        return self.__dict__.copy()
