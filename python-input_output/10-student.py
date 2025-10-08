@@ -1,38 +1,22 @@
 #!/usr/bin/python3
-"""Defines a Student class with JSON serialization capability"""
+"""Module that defines a Student class with a to_json method"""
+
 
 class Student:
     """Represents a student"""
 
     def __init__(self, first_name, last_name, age):
-        """
-        Initialize a Student instance.
-
-        Args:
-            first_name (str): First name of the student.
-            last_name (str): Last name of the student.
-            age (int): Age of the student.
-        """
+        """Initialize a Student instance"""
         self.first_name = first_name
         self.last_name = last_name
         self.age = age
 
     def to_json(self, attrs=None):
-        """
-        Retrieve a dictionary representation of the Student instance.
+        """Return a dictionary representation of the Student
 
-        Args:
-            attrs (list, optional): List of attribute names to retrieve.
-                                    If None, return all attributes.
-
-        Returns:
-            dict: Dictionary of requested attributes.
+        If attrs is a list of strings, only include those attributes
+        that exist in the instance.
         """
         if attrs is None:
             return self.__dict__.copy()
-
-        result = {}
-        for attr in attrs:
-            if attr in self.__dict__:
-                result[attr] = self.__dict__[attr]
-        return result
+        return {k: v for k, v in self.__dict__.items() if k in attrs}
