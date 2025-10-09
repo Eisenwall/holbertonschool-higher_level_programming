@@ -18,10 +18,9 @@ class MyServer(http.server.BaseHTTPRequestHandler):
             self.wfile.write(js.encode("utf-8"))
         elif self.path == "/status":
             self.send_response(200)
-            self.send_header("Content-type", "application/json")
+            self.send_header("Content-type", "text/plain")
             self.end_headers()
-            msg = {"status": "OK"}
-            self.wfile.write(json.dumps(msg, separators=(',', ':')).encode())
+            self.wfile.write(b"OK")
         elif self.path == "/info":
             self.send_response(200)
             self.send_header("Content-type", "application/json")
