@@ -21,7 +21,7 @@ class MyServer(http.server.BaseHTTPRequestHandler):
             self.send_header("Content-type", "application/json")
             self.end_headers()
             msg = {"status": "OK"}
-            self.wfile.write(json.dumps(msg).encode())
+            self.wfile.write(json.dumps(msg, separators=(',', ':')).encode())
         elif self.path == "/info":
             self.send_response(200)
             self.send_header("Content-type", "application/json")
