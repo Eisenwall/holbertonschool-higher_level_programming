@@ -11,18 +11,18 @@ from model_state import Base, State
 
 
 if __name__ == "__main__":
-    # Get MySQL username, password, and database name from arguments
     username = sys.argv[1]
     password = sys.argv[2]
     database = sys.argv[3]
 
     # Connect to MySQL server
     engine = create_engine(
-        'mysql+mysqldb://{}:{}@localhost/{}'.format(username, password, database),
+        'mysql+mysqldb://{}:{}@localhost/{}'.format(
+            username, password, database
+        ),
         pool_pre_ping=True
     )
 
-    # Create a configured "Session" class
     Session = sessionmaker(bind=engine)
     session = Session()
 
@@ -32,12 +32,8 @@ if __name__ == "__main__":
         .order_by(State.id)\
         .all()
 
-    # Print results (split long string)
+    # Print results
     for state in states_with_a:
-        print("{}: {}".format(
-            state.id,
-            state.name
-        ))
+        print("{}: {}".format(state.id, state.name))
 
-    # Close session
     session.close()
