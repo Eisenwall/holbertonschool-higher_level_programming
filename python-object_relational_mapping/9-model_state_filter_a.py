@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-Lists all State objects that contain the letter 'a' from the database hbtn_0e_6_usa
+Lists all State objects that contain the letter 'a'
+from the database hbtn_0e_6_usa
 """
 
 import sys
@@ -10,22 +11,26 @@ from model_state import Base, State
 
 
 if __name__ == "__main__":
-    # Get MySQL username, password, and database name from arguments
+    # Get MySQL username, password, and database name
     username = sys.argv[1]
     password = sys.argv[2]
     database = sys.argv[3]
 
     # Connect to MySQL server
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'
-                           .format(username, password, database),
-                           pool_pre_ping=True)
+    engine = create_engine(
+        'mysql+mysqldb://{}:{}@localhost/{}'.format(username, password, database),
+        pool_pre_ping=True
+    )
 
     # Create a configured "Session" class
     Session = sessionmaker(bind=engine)
     session = Session()
 
     # Query State objects that contain 'a', ordered by id
-    states_with_a = session.query(State).filter(State.name.like('%a%')).order_by(State.id).all()
+    states_with_a = session.query(State)\
+        .filter(State.name.like('%a%'))\
+        .order_by(State.id)\
+        .all()
 
     # Print results
     for state in states_with_a:
