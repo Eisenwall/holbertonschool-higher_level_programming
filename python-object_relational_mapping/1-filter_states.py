@@ -8,12 +8,10 @@ import sys
 
 
 if __name__ == "__main__":
-    # Get MySQL username, password, and database name from arguments
     username = sys.argv[1]
     password = sys.argv[2]
     database = sys.argv[3]
 
-    # Connect to MySQL server on localhost at port 3306
     db = MySQLdb.connect(
         host="localhost",
         user=username,
@@ -22,18 +20,15 @@ if __name__ == "__main__":
         port=3306
     )
 
-    # Create a cursor object to execute SQL queries
     cursor = db.cursor()
 
-    # Execute SQL query to select states starting with 'N', ordered by id
-    query = ("SELECT * FROM states WHERE name LIKE 'N%' "
+    # Case-sensitive search for names starting with 'N'
+    query = ("SELECT * FROM states WHERE BINARY name LIKE 'N%' "
              "ORDER BY id ASC")
     cursor.execute(query)
 
-    # Fetch all results and print each row
     for row in cursor.fetchall():
         print(row)
 
-    # Close cursor and connection
     cursor.close()
     db.close()
