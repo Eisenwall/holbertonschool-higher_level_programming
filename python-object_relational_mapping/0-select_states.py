@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+"""
+This script connects to a MySQL server and retrieves all states
+from the hbtn_0e_0_usa database, ordered by the state id in ascending order.
+"""
+
 import MySQLdb
 import sys
 
