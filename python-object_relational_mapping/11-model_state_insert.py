@@ -13,8 +13,9 @@ if __name__ == "__main__":
     database = sys.argv[3]
 
     # Create a connection to the MySQL database
+    db_url = 'mysql+mysqldb://{}:{}@localhost/{}'.format(username, password, database)
     engine = create_engine(
-        'mysql+mysqldb://{}:{}@localhost/{}'.format(username, password, database),
+        db_url,
         pool_pre_ping=True
     )
 
