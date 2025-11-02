@@ -9,7 +9,6 @@ import sys
 
 
 if __name__ == "__main__":
-    # Get MySQL username, password, database name, and state name from arguments
     username = sys.argv[1]
     password = sys.argv[2]
     database = sys.argv[3]
@@ -24,19 +23,15 @@ if __name__ == "__main__":
         port=3306
     )
 
-    # Create a cursor object to execute SQL queries
     cursor = db.cursor()
 
-    # Use string formatting to create SQL query with user input
-    query = "SELECT * FROM states WHERE name='{}' ORDER BY id ASC".format(
-        state_name
-    )
+    # SQL query using format to include user input
+    query = ("SELECT * FROM states WHERE name='{}' "
+             "ORDER BY id ASC").format(state_name)
     cursor.execute(query)
 
-    # Fetch all results and print each row
     for row in cursor.fetchall():
         print(row)
 
-    # Close cursor and connection
     cursor.close()
     db.close()
