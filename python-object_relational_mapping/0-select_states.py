@@ -1,34 +1,33 @@
 #!/usr/bin/python3
 """
-This script connects to a MySQL server and retrieves all states
-from the hbtn_0e_0_usa database, ordered by the state id in ascending order.
+Lists all states from the database hbtn_0e_0_usa.
 """
 
 import MySQLdb
 import sys
 
 if __name__ == "__main__":
-    # Get arguments
-    mysql_user = sys.argv[1]
-    mysql_pass = sys.argv[2]
-    db_name = sys.argv[3]
+    # Get MySQL username, password, and database name from command-line arguments
+    username = sys.argv[1]
+    password = sys.argv[2]
+    database = sys.argv[3]
 
-    # Connect to the MySQL server
-    db = MySQLdb.connect(host="localhost", port=3306, user=mysql_user, passwd=mysql_pass, db=db_name)
+    # Connect to MySQL server running on localhost at port 3306
+    db = MySQLdb.connect(host="localhost", user=username, passwd=password, db=database, port=3306)
 
-    # Create a cursor object to interact with the database
+    # Create a cursor object to execute SQL queries
     cursor = db.cursor()
 
-    # Execute the query to get all states sorted by id
-    cursor.execute("SELECT id, name FROM states ORDER BY id ASC")
+    # Execute SQL query to select all states ordered by id
+    cursor.execute("SELECT * FROM states ORDER BY id ASC")
 
-    # Fetch all the results
-    states = cursor.fetchall()
+    # Fetch all rows from the executed query
+    rows = cursor.fetchall()
 
-    # Display the results
-    for state in states:
-        print(state)
+    # Print each row as a tuple
+    for row in rows:
+        print(row)
 
-    # Close the cursor and connection
+    # Close the cursor and database connection
     cursor.close()
     db.close()
