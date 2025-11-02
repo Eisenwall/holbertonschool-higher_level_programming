@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """
-Lists all State objects that contain 
-the letter 'a'
+Lists all State objects that contain the letter 'a'
 from the database hbtn_0e_6_usa
 """
 
@@ -12,7 +11,7 @@ from model_state import Base, State
 
 
 if __name__ == "__main__":
-    # Get MySQL username, password, and database name
+    # Get MySQL username, password, and database name from arguments
     username = sys.argv[1]
     password = sys.argv[2]
     database = sys.argv[3]
