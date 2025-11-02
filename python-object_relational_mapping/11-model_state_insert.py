@@ -12,12 +12,13 @@ if __name__ == "__main__":
     password = sys.argv[2]
     database = sys.argv[3]
 
-    # Create a connection to the MySQL database
-    db_url = 'mysql+mysqldb://{}:{}@localhost/{}'.format(username, password, database)
-    engine = create_engine(
-        db_url,
-        pool_pre_ping=True
+    # Build the database URL
+    db_url = (
+        'mysql+mysqldb://{}:{}@localhost/{}'
+        .format(username, password, database)
     )
+    # Create the engine
+    engine = create_engine(db_url, pool_pre_ping=True)
 
     # Create a configured "Session" class
     Session = sessionmaker(bind=engine)
