@@ -32,9 +32,12 @@ if __name__ == "__main__":
         .order_by(State.id)\
         .all()
 
-    # Print results
+    # Print results (split long string)
     for state in states_with_a:
-        print("{}: {}".format(state.id, state.name))
+        print("{}: {}".format(
+            state.id,
+            state.name
+        ))
 
     # Close session
     session.close()
