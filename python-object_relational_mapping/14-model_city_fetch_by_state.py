@@ -7,28 +7,26 @@ from sqlalchemy.orm import sessionmaker
 from model_state import Base, State
 from model_city import City  # Import City so SQLAlchemy knows about it
 
-
 if __name__ == "__main__":
     if len(sys.argv) != 4:
-        print("Usage: ./14-model_city_fetch_by_state.py <username> <password> <database>")
+        print("Usage: {} <username> <password> <database>".format(sys.argv[0]))
         sys.exit(1)
 
-    username, password, db_name = sys.argv[1], sys.argv[2], sys.argv[3]
+    # Get MySQL credentials from command line
+    username, password, database = sys.argv[1], sys.argv[2], sys.argv[3]
 
-    # Connect to MySQL database
-    engine = create_engine(
-        f"mysql+mysqldb://{username}:{password}@localhost/{db_name}"
-    )
-    Base.metadata.create_all(engine)
-
-    # Create session
+    # Create the engine and bind it to the session
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'
+                           .format(username, password, database),
+                           pool_pre_ping=True)
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    # Query all cities joined with states
+    # Query all City objects, joined with their State, ordered by city id
     cities = session.query(City).order_by(City.id).all()
 
     for city in cities:
-        print(f"{city.state.name}: ({city.id}) {city.name}")
+        print("{}: ({}) {}".format(city.state.name, city.id, city.name))
 
+    # Close the session
     session.close()
