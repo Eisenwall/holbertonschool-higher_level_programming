@@ -1,6 +1,6 @@
 #!/usr/bin/node
 
-const args = process.argv.slice(2); // get all arguments after the script name
+const args = process.argv.slice(2); // remove 'node' and script name
 
 if (args.length === 0) {
   console.log('No argument');
